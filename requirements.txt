@@ -1,0 +1,5 @@
+plotly~=4.14.3
+bme280~=0.5
+smbus2~=0.4.0
+PyYAML~=5.3.1
+RPI.GPIO~=0.7.0
