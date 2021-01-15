@@ -1,0 +1,23 @@
+# Key File Containging GPIO Pinout Parameters for Raspberry Pi (Rev 4)
+#
+# Button GPIO is connected to ground
+VentFan:
+  SendOn: 1234567
+  SendOff: 1234567
+  ButtonGPIO: 99
+  LEDGPIO: 99
+Heater:
+  SendOn: 1234567
+  SendOff: 1234567
+  ButtonGPIO: 99
+  LEDGPIO: 99
+GrowLight:
+  SendOn: 1234567
+  SendOff: 1234567
+  ButtonGPIO: 99
+  LEDGPIO: 99
+StandFan:
+  SendOn: 1234567
+  SendOff: 1234567
+  ButtonGPIO: 99
+  LEDGPIO: 99
