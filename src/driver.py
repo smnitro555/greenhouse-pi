@@ -1,9 +1,15 @@
 import plotly
-import RPI.GPIO as GPIO
-# https://pypi.org/project/RPi.GPIO/
-import bme280
-# https://pypi.org/project/RPi.bme280/
 import os
+
+# Set environment variable for GPIOZERO to use a mock library for development
+# on non-Raspberry Pi machines. This must be done before importing RPi.GPIO.
+if os.name != 'posix':
+    os.environ['GPIOZERO_PIN_FACTORY'] = 'mock'
+
+import RPi.GPIO as GPIO  # https://pypi.org/project/RPi.GPIO/
+import bme280  # https://pypi.org/project/RPi.bme280/
+
+# https://pypi.org/project/RPi.bme280/
 import time
 import pandas
 import smbus2

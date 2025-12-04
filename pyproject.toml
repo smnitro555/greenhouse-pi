@@ -1,0 +1,22 @@
+[project]
+name = "greenhouse-pi"
+version = "0.1.0"
+description = "Repository to manage code for Raspberry Pi controlled greenhouse."
+authors = [
+    {name = "Siva Movva"},
+]
+dependencies = [
+    "plotly",
+    "bme280",
+    "smbus2",
+    "PyYAML",
+    "sphinx",
+    "numpy",
+    "pandas",
+    "seaborn",
+    "mypy",
+    "black",
+    "gpiozero",
+    "RPI.GPIO ; sys_platform == 'linux'"
+]
+requires-python = ">=3.11"

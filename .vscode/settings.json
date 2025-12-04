@@ -1,0 +1,9 @@
+{
+    // Sets the default python interpreter to the one in your virtual environment.
+    "python.defaultInterpreterPath": ".venv/Scripts/python.exe",
+    // Configures black to format python files on save.
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    }
+}
