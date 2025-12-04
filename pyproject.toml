@@ -7,12 +7,15 @@ authors = [
 ]
 dependencies = [
     "plotly",
+    "plotly-express",
     "bme280",
     "smbus2",
     "PyYAML",
     "sphinx",
     "numpy",
     "pandas",
+    "pydantic",
+    "flask",
     "seaborn",
     "mypy",
     "black",
