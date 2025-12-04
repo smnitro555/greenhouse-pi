@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        // Python development
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        // Code formatting
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        // Remote development (for Raspberry Pi)
+        "ms-vscode-remote.remote-ssh",
+        // Web development (HTML, CSS, JavaScript for the dashboard)
+        "dbaeumer.vscode-eslint", // For JavaScript linting
+        "vscode.html-css", // Built-in, but good to list
+    ]
+}
