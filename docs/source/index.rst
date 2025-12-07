@@ -14,6 +14,9 @@ Welcome to greenhouse-pi's documentation!
 Some interesting comments here
 
 
+The hardware box could be generated with a tool such as:
+`Integrated Hinge Box generator <https://boxes.hackerspace-bamberg.de/IntegratedHingeBox?language=en>`_
+
 Indices and tables
 ==================
 

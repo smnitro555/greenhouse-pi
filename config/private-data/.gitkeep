@@ -1,0 +1,3 @@
+# This directory is for sensitive configuration files
+# Add email credentials, API keys, etc. here
+# These files should be added to .gitignore

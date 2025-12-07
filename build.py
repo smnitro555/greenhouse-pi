@@ -47,10 +47,9 @@ def build_env():
     # Determine the path to the uv executable in the venv
     uv_executable = os.path.join(VENV_DIR, "Scripts" if sys.platform == "win32" else "bin", "uv")
 
-    print("\n--- Installing dependencies using uv ---")
-    # Using 'uv pip install -e .' is the correct way to install the project
-    # in editable mode and its dependencies, similar to what 'uv sync' does for requirements files.
-    run_command([uv_executable, "pip", "install", "-e", "."])
+    print("\n--- Installing dependencies using uv sync ---")
+    # uv sync will install all dependencies from pyproject.toml
+    run_command([uv_executable, "sync"])
     print("\nVirtual environment ready.")
 
 
@@ -78,12 +77,56 @@ def build_all():
     build_doc()
 
 
+def run_greenhouse():
+    """Runs the greenhouse manager."""
+    print("\n--- Starting Greenhouse Manager ---")
+    python_executable = os.path.join(VENV_DIR, "Scripts" if sys.platform == "win32" else "bin", "python")
+
+    if not os.path.exists(python_executable):
+        print(f"Error: Python executable not found in venv at {python_executable}")
+        print("Please run 'python build.py build-env' first.")
+        sys.exit(1)
+
+    # Run the greenhouse manager
+    run_command([python_executable, "-m", "greenhouse_manager.greenhouse_manager"])
+
+
+def run_webserver():
+    """Runs the Flask webserver."""
+    print("\n--- Starting Webserver ---")
+    python_executable = os.path.join(VENV_DIR, "Scripts" if sys.platform == "win32" else "bin", "python")
+
+    if not os.path.exists(python_executable):
+        print(f"Error: Python executable not found in venv at {python_executable}")
+        print("Please run 'python build.py build-env' first.")
+        sys.exit(1)
+
+    # Run the webserver (will be implemented later)
+    webserver_path = os.path.join("src", "webserver", "app.py")
+    if os.path.exists(webserver_path):
+        run_command([python_executable, webserver_path])
+    else:
+        print(f"Error: Webserver not found at {webserver_path}")
+        print("Webserver not yet implemented.")
+        sys.exit(1)
+
+
+def run_all():
+    """Runs both the greenhouse manager and webserver (in separate processes would be ideal)."""
+    print("\n--- Note: This will run greenhouse manager first ---")
+    print("--- To run webserver separately, use 'python build.py run-webserver' in another terminal ---")
+    run_greenhouse()
+
+
 if __name__ == "__main__":
     # A simple command-line argument parser
     commands = {
         "build": build_all,
         "build-env": build_env,
         "build-doc": build_doc,
+        "run": run_all,
+        "run-greenhouse": run_greenhouse,
+        "run-webserver": run_webserver,
     }
 
     # Default to 'build' if no arguments are provided

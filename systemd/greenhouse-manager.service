@@ -1,0 +1,30 @@
+[Unit]
+Description=Greenhouse Manager Service
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/greenhouse-pi
+Environment="PATH=/home/pi/greenhouse-pi/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Run the greenhouse manager
+ExecStart=/home/pi/greenhouse-pi/.venv/bin/python -m greenhouse_manager.greenhouse_manager
+
+# Restart configuration
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=greenhouse-manager
+
+# Resource limits
+MemoryLimit=256M
+CPUQuota=40%
+
+[Install]
+WantedBy=multi-user.target

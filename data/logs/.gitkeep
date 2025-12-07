@@ -1,0 +1,6 @@
+# This directory stores daily log files in Parquet or Feather format
+# Log files are automatically managed by greenhouse_data_logger.py
+#
+# Files in this directory are ignored by git (see .gitignore)
+#
+# Format: greenhouse_log_YYYY-MM-DD.parquet

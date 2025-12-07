@@ -1,0 +1,6 @@
+# This directory stores greenhouse camera images
+# Images are automatically captured on schedule by greenhouse_manager.py
+#
+# Files in this directory are ignored by git (see .gitignore)
+#
+# Format: greenhouse_YYYYMMDD_HHMMSS.jpg

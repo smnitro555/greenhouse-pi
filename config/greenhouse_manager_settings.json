@@ -1,0 +1,72 @@
+{
+  "mock_mode": false,
+  "sensor": {
+    "i2c_bus": 1,
+    "i2c_address": 118,
+    "read_interval_seconds": 5
+  },
+  "temperature_control": {
+    "target_temp_celsius": 24.0,
+    "temp_tolerance_celsius": 2.0,
+    "heater_enabled": true,
+    "vent_fan_enabled": true
+  },
+  "humidity_control": {
+    "target_humidity_percent": 65.0,
+    "humidity_tolerance_percent": 10.0
+  },
+  "heater": {
+    "name": "Heater",
+    "rf_on_code": 5330227,
+    "rf_off_code": 5330236,
+    "led_gpio_pin": 17,
+    "button_gpio_pin": 23
+  },
+  "vent_fan": {
+    "name": "Vent Fan",
+    "rf_on_code": 5330371,
+    "rf_off_code": 5330380,
+    "led_gpio_pin": 18,
+    "button_gpio_pin": 24
+  },
+  "grow_lights": {
+    "name": "Grow Lights",
+    "rf_on_code": 5330691,
+    "rf_off_code": 5330700,
+    "led_gpio_pin": 19,
+    "button_gpio_pin": 25
+  },
+  "stand_fan": {
+    "name": "Stand Fan",
+    "rf_on_code": 5332227,
+    "rf_off_code": 5332236,
+    "led_gpio_pin": 20,
+    "button_gpio_pin": 8
+  },
+  "grow_lights_schedule": {
+    "enabled": true,
+    "start_time": "06:00:00",
+    "end_time": "20:00:00"
+  },
+  "stand_fan_schedule": {
+    "enabled": true,
+    "start_time": "08:00:00",
+    "end_time": "22:00:00"
+  },
+  "camera_schedule": {
+    "enabled": true,
+    "interval_minutes": 30,
+    "active_hours_start": "06:00:00",
+    "active_hours_end": "20:00:00"
+  },
+  "data_logging": {
+    "enabled": true,
+    "log_interval_seconds": 60,
+    "log_format": "parquet",
+    "max_log_days": 365
+  },
+  "config_file_path": "config/greenhouse_manager_settings.json",
+  "rf_keys_path": "config/rf_keys.yaml",
+  "log_directory": "data/logs",
+  "image_directory": "data/images"
+}

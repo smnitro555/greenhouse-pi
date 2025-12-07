@@ -1,0 +1,33 @@
+# RF Keys Configuration for Greenhouse Devices
+#
+# This file contains the RF codes for controlling greenhouse appliances
+# via 433MHz RF outlets. Update these codes based on your actual RF outlet codes.
+#
+# To find your RF codes, use the 'RFSniffer' utility from the rc-switch library
+# or similar tools to capture the codes from your existing remotes.
+#
+# GPIO pins are for Raspberry Pi BCM numbering
+
+VentFan:
+  SendOn: 5330371
+  SendOff: 5330380
+  ButtonGPIO: 24
+  LEDGPIO: 18
+
+Heater:
+  SendOn: 5330227
+  SendOff: 5330236
+  ButtonGPIO: 23
+  LEDGPIO: 17
+
+GrowLight:
+  SendOn: 5330691
+  SendOff: 5330700
+  ButtonGPIO: 25
+  LEDGPIO: 19
+
+StandFan:
+  SendOn: 5332227
+  SendOff: 5332236
+  ButtonGPIO: 8
+  LEDGPIO: 20
