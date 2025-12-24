@@ -9,6 +9,8 @@
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -16,9 +18,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            font-family: 'Roboto Flex', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 50%, #B2DFDB 100%);
+            color: #1B5E20;
             padding: 20px;
         }
 
@@ -29,22 +31,24 @@
 
         header {
             text-align: center;
-            color: white;
+            color: #1B5E20;
             margin-bottom: 30px;
         }
 
         h1 {
             font-size: 2.5em;
+            font-weight: 500;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            letter-spacing: -0.5px;
         }
 
         .status-bar {
             background: white;
-            border-radius: 10px;
+            border-radius: 16px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(27,94,32,0.08);
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
@@ -53,43 +57,48 @@
         .status-item {
             text-align: center;
             padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
+            background: #F1F8E9;
+            border-radius: 12px;
         }
 
         .status-label {
             font-size: 0.9em;
-            color: #666;
+            font-weight: 500;
+            color: #558B2F;
             margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .status-value {
             font-size: 1.8em;
-            font-weight: bold;
-            color: #667eea;
+            font-weight: 700;
+            color: #2E7D32;
         }
 
         .status-unit {
             font-size: 0.8em;
-            color: #999;
+            color: #81C784;
+            font-weight: 500;
         }
 
         .device-state {
             display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
+            padding: 6px 16px;
+            border-radius: 24px;
             font-size: 0.9em;
-            font-weight: bold;
+            font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
         .device-on {
-            background: #4caf50;
+            background: #66BB6A;
             color: white;
         }
 
         .device-off {
-            background: #ccc;
-            color: #666;
+            background: #E0E0E0;
+            color: #757575;
         }
 
         .charts-grid {
@@ -101,23 +110,24 @@
 
         .chart-container {
             background: white;
-            border-radius: 10px;
+            border-radius: 16px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(27,94,32,0.08);
         }
 
         .chart-title {
             font-size: 1.2em;
-            font-weight: bold;
+            font-weight: 500;
             margin-bottom: 15px;
-            color: #667eea;
+            color: #2E7D32;
+            letter-spacing: 0.2px;
         }
 
         .image-section {
             background: white;
-            border-radius: 10px;
+            border-radius: 16px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(27,94,32,0.08);
         }
 
         .image-container {
@@ -128,8 +138,8 @@
         .greenhouse-image {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(27,94,32,0.12);
         }
 
         .time-controls {
@@ -150,16 +160,19 @@
             padding: 10px 20px;
             margin: 5px;
             border: none;
-            border-radius: 5px;
-            background: #667eea;
+            border-radius: 24px;
+            background: #66BB6A;
             color: white;
             cursor: pointer;
             font-size: 1em;
-            transition: background 0.3s;
+            font-weight: 500;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
         }
 
         .btn:hover {
-            background: #5568d3;
+            background: #4CAF50;
+            box-shadow: 0 2px 8px rgba(76,175,80,0.3);
         }
 
         .view-selector {
@@ -168,41 +181,127 @@
         }
 
         .view-btn {
-            padding: 8px 16px;
+            padding: 10px 20px;
             margin: 0 5px;
-            border: 2px solid #667eea;
-            border-radius: 5px;
+            border: 2px solid #66BB6A;
+            border-radius: 24px;
             background: white;
-            color: #667eea;
+            color: #2E7D32;
             cursor: pointer;
             font-size: 0.9em;
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
         }
 
         .view-btn.active {
-            background: #667eea;
+            background: #66BB6A;
             color: white;
         }
 
         .loading {
             text-align: center;
             padding: 40px;
-            color: #999;
+            color: #81C784;
+            font-weight: 400;
         }
 
         .error {
-            background: #f44336;
+            background: #E57373;
             color: white;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 12px;
             margin: 10px 0;
+            font-weight: 500;
         }
 
         .timestamp {
             text-align: center;
-            color: #666;
+            color: #558B2F;
             font-size: 0.9em;
+            font-weight: 400;
             margin-top: 10px;
+        }
+
+        .current-datetime {
+            text-align: center;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .flip-clock-section {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .flip-digit {
+            position: relative;
+            display: inline-block;
+            width: 45px;
+            height: 60px;
+            background: linear-gradient(180deg, #1B5E20 0%, #2E7D32 100%);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+
+        .flip-digit::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #1B5E20;
+            z-index: 2;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .flip-digit-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #C8E6C9;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-family: 'Roboto Flex', monospace;
+        }
+
+        .flip-separator {
+            font-size: 2em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin: 0 -3px;
+        }
+
+        .flip-label {
+            font-size: 0.75em;
+            color: #558B2F;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .flip-date {
+            background: linear-gradient(180deg, #2E7D32 0%, #388E3C 100%);
+            width: auto;
+            min-width: 250px;
+            padding: 0 20px;
+            height: 50px;
+        }
+
+        .flip-date .flip-digit-content {
+            font-size: 1em;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -211,6 +310,7 @@
         <header>
             <h1>🌱 Greenhouse Monitor</h1>
             <p>Real-time monitoring and control dashboard</p>
+            <div class="current-datetime" id="currentDateTime"></div>
         </header>
 
         <div id="statusBar" class="status-bar">
@@ -265,6 +365,62 @@
         let currentImageIndex = 0;
         let isPlaying = false;
         let playInterval = null;
+
+        // Update current date and time in flip clock style
+        function updateDateTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            const dateStr = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+
+            const h1 = Math.floor(displayHours / 10);
+            const h2 = displayHours % 10;
+            const m1 = Math.floor(minutes / 10);
+            const m2 = minutes % 10;
+            const s1 = Math.floor(seconds / 10);
+            const s2 = seconds % 10;
+
+            document.getElementById('currentDateTime').innerHTML = `
+                <div class="flip-clock-section">
+                    <div class="flip-digit flip-date">
+                        <div class="flip-digit-content">${dateStr}</div>
+                    </div>
+                </div>
+                <div class="flip-clock-section">
+                    <div class="flip-digit">
+                        <div class="flip-digit-content">${h1}</div>
+                    </div>
+                    <div class="flip-digit">
+                        <div class="flip-digit-content">${h2}</div>
+                    </div>
+                    <span class="flip-separator">:</span>
+                    <div class="flip-digit">
+                        <div class="flip-digit-content">${m1}</div>
+                    </div>
+                    <div class="flip-digit">
+                        <div class="flip-digit-content">${m2}</div>
+                    </div>
+                    <span class="flip-separator">:</span>
+                    <div class="flip-digit">
+                        <div class="flip-digit-content">${s1}</div>
+                    </div>
+                    <div class="flip-digit">
+                        <div class="flip-digit-content">${s2}</div>
+                    </div>
+                    <div class="flip-digit" style="width: 55px;">
+                        <div class="flip-digit-content" style="font-size: 1.3em;">${ampm}</div>
+                    </div>
+                </div>
+            `;
+        }
 
         // Fetch and display current status
         async function fetchStatus() {
@@ -478,9 +634,13 @@
         }
 
         // Initialize dashboard
+        updateDateTime();
         fetchStatus();
         fetchHistory('day');
         fetchImages();
+
+        // Update time every second
+        setInterval(updateDateTime, 1000);
 
         // Auto-refresh every 30 seconds
         setInterval(() => {

@@ -14,6 +14,26 @@ Welcome to greenhouse-pi's documentation!
 Some interesting comments here
 
 
+Hardware Setup
+==============
+
+Wiring Diagram
+--------------
+
+The following diagram shows the complete wiring configuration for the Raspberry Pi greenhouse monitoring system:
+
+.. figure:: circuit_diagram/circuit_image.svg
+   :alt: Greenhouse Pi Wiring Diagram
+   :align: center
+   :width: 100%
+
+   Raspberry Pi Greenhouse Wiring Diagram
+
+This diagram illustrates the connections between the Raspberry Pi and all sensors, actuators, and other hardware components used in the greenhouse monitoring and control system.
+
+Hardware Enclosure
+------------------
+
 The hardware box could be generated with a tool such as:
 `Integrated Hinge Box generator <https://boxes.hackerspace-bamberg.de/IntegratedHingeBox?language=en>`_
 
